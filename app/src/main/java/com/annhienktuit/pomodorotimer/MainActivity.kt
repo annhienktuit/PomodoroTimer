@@ -22,23 +22,23 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
     companion object {
         fun setAlarm(context: Context, nowSeconds: Long, secondsRemaining: Long): Long{
-//            Log.i("Function: ", "setAlarm")
-           val wakeupTime = (secondsRemaining + nowSeconds) * 1000 //convert millisec to sec
-//            val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-//            val intent = Intent(context, TimerExpiredReceiver::class.java)
-//            val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0)
-//            alarmManager.setExact(AlarmManager.RTC_WAKEUP, wakeupTime, pendingIntent)
-//            PrefUtil.setAlarmSetTime(nowSeconds, context)
+            Log.i("Function: ", "setAlarm")
+            val wakeupTime = (secondsRemaining + nowSeconds) * 1000 //convert millisec to sec
+            val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            val intent = Intent(context, TimerExpiredReceiver::class.java)
+            val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0)
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, wakeupTime, pendingIntent)
+            PrefUtil.setAlarmSetTime(nowSeconds, context)
            return wakeupTime
         }
 
         fun removeAlarm(context: Context){
-//            Log.i("Function: ", "removeAlarm")
-//            val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-//            val intent = Intent(context, TimerExpiredReceiver::class.java)
-//            val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0)
-//            alarmManager.cancel(pendingIntent)
-//            PrefUtil.setAlarmSetTime(0, context)
+            Log.i("Function: ", "removeAlarm")
+            val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            val intent = Intent(context, TimerExpiredReceiver::class.java)
+            val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0)
+            alarmManager.cancel(pendingIntent)
+            PrefUtil.setAlarmSetTime(0, context)
         }
 
         val nowSeconds:Long
