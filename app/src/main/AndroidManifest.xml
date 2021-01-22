@@ -9,10 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_new_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PomodoroTimer">
+        <activity
+            android:name=".AboutActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar">
+        </activity>
+
         <receiver
             android:name=".TimerExpiredReceiver"
             android:enabled="true"
-            android:exported="false"></receiver>
+            android:exported="false" />
 
         <activity
             android:name=".MainActivity"

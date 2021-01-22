@@ -47,4 +47,8 @@ dependencies {
     implementation 'me.zhanghai.android.materialprogressbar:library:1.6.1'
     implementation 'com.pavelsikun:material-seekbar-preference:2.3.0+'
     implementation 'androidx.preference:preference:1.1.1'
+    compile 'com.makeramen:roundedimageview:2.3.0'
+}
+repositories {
+    mavenCentral()
 }
