@@ -7,46 +7,6 @@
     tools:context=".AboutActivity">
 
 
-    <ImageView
-        android:id="@+id/imageViewGit"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="336dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewLinkedIn"
-        app:srcCompat="@drawable/ic_github" />
-
-    <ImageView
-        android:id="@+id/imageViewLinkedIn"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="336dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewGmail"
-        app:srcCompat="@drawable/ic_linkedin" />
-
-    <ImageView
-        android:id="@+id/imageViewGmail"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="336dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewFB"
-        app:srcCompat="@drawable/ic_gmail" />
-
-    <ImageView
-        android:id="@+id/imageViewFB"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="336dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewIns"
-        app:srcCompat="@drawable/ic_facebook" />
-
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/imageView1"
         android:layout_width="1.8875in"
@@ -100,5 +60,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView1"
         app:srcCompat="@drawable/ic_instagram" />
+
+    <ImageView
+        android:id="@+id/imageViewLinkedIn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="336dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewGmail"
+        app:srcCompat="@drawable/ic_linkedin" />
+
+    <ImageView
+        android:id="@+id/imageViewGmail"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="336dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewFB"
+        app:srcCompat="@drawable/ic_gmail" />
+
+    <ImageView
+        android:id="@+id/imageViewFB"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="336dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewIns"
+        app:srcCompat="@drawable/ic_facebook" />
+
+    <ImageView
+        android:id="@+id/imageViewGit"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="336dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewLinkedIn"
+        app:srcCompat="@drawable/ic_github" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
