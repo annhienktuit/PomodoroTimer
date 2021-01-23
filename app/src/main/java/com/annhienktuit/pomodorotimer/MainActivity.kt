@@ -5,6 +5,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         Stopped, Paused, Running
     }
     //khai bao bien
+
     private lateinit var timer: CountDownTimer
     private var timerLengthSeconds: Long = 0
     private var timerState = TimerState.Stopped
@@ -94,6 +96,8 @@ class MainActivity : AppCompatActivity() {
         countFlag++
         //background
         if(secondsRemaining == lengthInMinutes*60.toLong() && countFlag>0) {
+            val eventually: MediaPlayer = MediaPlayer.create(this, R.raw.eventually)
+            eventually.start()
             if(countCycle < 4) countCycle++
             else countCycle = 0
             updateCountdownUI()
@@ -175,6 +179,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setFinishedPomodoro(){
+        val eventually: MediaPlayer = MediaPlayer.create(this, R.raw.eventually)
+        eventually.start()
         if(countCycle < 4) countCycle++
         else countCycle = 0
         textViewDescription.text = "Take a break"
