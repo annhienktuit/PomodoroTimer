@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         Stopped, Paused, Running
     }
     //khai bao bien
-
+    var timerFinished: Boolean = false
     private lateinit var timer: CountDownTimer
     private var timerLengthSeconds: Long = 0
     private var timerState = TimerState.Stopped
@@ -95,9 +95,11 @@ class MainActivity : AppCompatActivity() {
         initTimer()
         countFlag++
         //background
-        if(secondsRemaining == lengthInMinutes*60.toLong() && countFlag>0) {
+        Log.i("test",timerState.toString())
+        if(secondsRemaining == lengthInMinutes*60.toLong() && countFlag > 0 && timerFinished) {
             val eventually: MediaPlayer = MediaPlayer.create(this, R.raw.eventually)
             eventually.start()
+            timerState = TimerState.Stopped
             if(countCycle < 4) countCycle++
             else countCycle = 0
             updateCountdownUI()
@@ -151,6 +153,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun onTimerFinished(){
         Log.i("Function: ", "onTimerFinished")
+        if(timerState == TimerState.Running) timerFinished = true
         timerState = TimerState.Stopped
         setNewTimerLength()
         //running
@@ -167,6 +170,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun startTimer(){
         Log.i("Function: ", "startTimer")
+        timerFinished = false
         timerState = TimerState.Running
         textViewDescription.text = "Focus on your work until the timer rings"
         timer = object: CountDownTimer(secondsRemaining * 1000, 1000) {
