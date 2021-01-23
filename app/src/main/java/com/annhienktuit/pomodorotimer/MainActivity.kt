@@ -46,7 +46,6 @@ class MainActivity : AppCompatActivity() {
         Stopped, Paused, Running
     }
     //khai bao bien
-    var timerFinished: Boolean = false
     private lateinit var timer: CountDownTimer
     private var timerLengthSeconds: Long = 0
     private var timerState = TimerState.Stopped
@@ -96,9 +95,7 @@ class MainActivity : AppCompatActivity() {
         countFlag++
         //background
         Log.i("test",timerState.toString())
-        if(secondsRemaining == lengthInMinutes*60.toLong() && countFlag > 0 && timerFinished) {
-            val eventually: MediaPlayer = MediaPlayer.create(this, R.raw.eventually)
-            eventually.start()
+        if(secondsRemaining == lengthInMinutes*60.toLong() && countFlag > 0) {
             timerState = TimerState.Stopped
             if(countCycle < 4) countCycle++
             else countCycle = 0
@@ -117,6 +114,9 @@ class MainActivity : AppCompatActivity() {
         }
         else if(timerState == TimerState.Paused){
             //show notification
+        }
+        else if(timerState == TimerState.Stopped){
+            countCycle--
         }
         PrefUtil.setPreviousTimerLengthSeconds(timerLengthSeconds, this)
         PrefUtil.setSecondsRemaining(secondsRemaining, this)
@@ -153,7 +153,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun onTimerFinished(){
         Log.i("Function: ", "onTimerFinished")
-        if(timerState == TimerState.Running) timerFinished = true
         timerState = TimerState.Stopped
         setNewTimerLength()
         //running
@@ -170,7 +169,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun startTimer(){
         Log.i("Function: ", "startTimer")
-        timerFinished = false
         timerState = TimerState.Running
         textViewDescription.text = "Focus on your work until the timer rings"
         timer = object: CountDownTimer(secondsRemaining * 1000, 1000) {
@@ -231,7 +229,7 @@ class MainActivity : AppCompatActivity() {
             TimerState.Paused -> {
                 fab_start.isEnabled = true
                 fab_stop.isEnabled = true
-                fab_pause.isEnabled = true
+                fab_pause.isEnabled = false
             }
         }
     }
