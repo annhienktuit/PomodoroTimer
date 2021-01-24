@@ -9,6 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_new_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PomodoroTimer">
+        <receiver
+            android:name=".TimerNotificationActionReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="stop"/>
+                <action android:name="pause" />
+                <action android:name="resume" />
+                <action android:name="start" />
+            </intent-filter>
+
+        </receiver>
+
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/Theme.PomodoroTimer.NoActionBar">

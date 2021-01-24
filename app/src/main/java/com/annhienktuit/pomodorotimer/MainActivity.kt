@@ -13,6 +13,7 @@ import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import com.annhienktuit.pomodorotimer.util.NotificationUtil
 import com.annhienktuit.pomodorotimer.util.PrefUtil
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -103,6 +104,7 @@ class MainActivity : AppCompatActivity() {
             textViewDescription.text = "Take a break"
         }
         removeAlarm(this)
+        NotificationUtil.hideTimerNotification(this)
     }
 
     override fun onPause() {
@@ -111,9 +113,12 @@ class MainActivity : AppCompatActivity() {
             timer.cancel()
             val wakeUpTime = setAlarm(this, nowSeconds, secondsRemaining)
             //background running
+            NotificationUtil.showTimerRunning(this,wakeUpTime)
         }
         else if(timerState == TimerState.Paused){
             //show notification
+            NotificationUtil.showTimerPaused(this)
+
         }
         else if(timerState == TimerState.Stopped){
             countCycle--
