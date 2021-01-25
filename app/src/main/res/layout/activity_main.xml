@@ -18,7 +18,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#f44336"
+            android:background="@color/main_color"
             app:popupTheme="@style/Theme.PomodoroTimer.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_bigger_margin"
-        app:backgroundTint="#f44336"
+        app:backgroundTint="@color/main_color"
         app:elevation="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/appBarLayout"
@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:layout_margin="@dimen/fab_bigger_margin"
-        app:backgroundTint="#f44336"
+        app:backgroundTint="@color/main_color"
         app:elevation="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/fab_stop"
@@ -90,7 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"
         android:layout_margin="@dimen/fab_bigger_margin"
-        app:backgroundTint="#f44336"
+        app:backgroundTint="@color/main_color"
         app:elevation="6dp"
         app:borderWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
