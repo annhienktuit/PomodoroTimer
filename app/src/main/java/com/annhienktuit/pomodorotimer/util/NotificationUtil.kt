@@ -31,7 +31,7 @@ class NotificationUtil {
             nBuilder.setContentTitle("Time is over")
                     .setContentText("Continue?")
                     .setContentIntent(getPendingIntentWithStack(context, MainActivity::class.java))
-                    .addAction(R.drawable.ic_play, "Start", startPendingIntent)
+                    .addAction(R.drawable.ic_play, "Continue", startPendingIntent)
             val nManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             nManager.createNotificationChannel(CHANNEL_ID_TIMER, CHANNEL_NAME_TIMER, true)
             nManager.notify(TIMER_ID, nBuilder.build())
@@ -54,8 +54,8 @@ class NotificationUtil {
                     .setContentText("End: ${df.format(Date(wakeUpTime))}")
                     .setContentIntent(getPendingIntentWithStack(context, MainActivity::class.java))
                     .setOngoing(true)
-                    .addAction(R.drawable.ic_stop, "Stop", stopPendingIntent)
                     .addAction(R.drawable.ic_pause, "Pause", pausePendingIntent)
+                    .addAction(R.drawable.ic_stop, "Stop", stopPendingIntent)
 
             val nManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             nManager.createNotificationChannel(CHANNEL_ID_TIMER, CHANNEL_NAME_TIMER, true)
@@ -71,7 +71,7 @@ class NotificationUtil {
 
             val nBuilder = getBasicNotificationBuilder(context, CHANNEL_ID_TIMER, true)
             nBuilder.setContentTitle("Timer is paused.")
-                    .setContentText("Resume?")
+                    .setContentText("Continue?")
                     .setContentIntent(getPendingIntentWithStack(context, MainActivity::class.java))
                     .setOngoing(true)
                     .addAction(R.drawable.ic_play, "Resume", resumePendingIntent)

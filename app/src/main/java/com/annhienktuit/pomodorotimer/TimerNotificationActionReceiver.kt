@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import com.annhienktuit.pomodorotimer.util.NotificationUtil
 import com.annhienktuit.pomodorotimer.util.PrefUtil
+import com.annhienktuit.pomodorotimer.MainActivity
 
 class TimerNotificationActionReceiver : BroadcastReceiver() {
 

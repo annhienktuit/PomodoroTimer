@@ -92,10 +92,7 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onResume() {
         super.onResume()
-        initTimer()
-        countFlag++
-        //background
-        Log.i("test",timerState.toString())
+        Log.i("test", secondsRemaining.toString())
         if(secondsRemaining == lengthInMinutes*60.toLong() && countFlag > 0) {
             timerState = TimerState.Stopped
             if(countCycle < 4) countCycle++
@@ -103,6 +100,9 @@ class MainActivity : AppCompatActivity() {
             updateCountdownUI()
             textViewDescription.text = "Take a break"
         }
+        initTimer()
+        countFlag++
+        //background
         removeAlarm(this)
         NotificationUtil.hideTimerNotification(this)
     }
@@ -127,6 +127,11 @@ class MainActivity : AppCompatActivity() {
         PrefUtil.setSecondsRemaining(secondsRemaining, this)
         PrefUtil.setTimerState(timerState, this)
     }
+
+    fun getCycle(): Int{
+        return countCycle
+    }
+
     private fun initTimer(){
         Log.i("Function: ", "initTimer")
         timerState = PrefUtil.getTimerState(this)
@@ -156,7 +161,7 @@ class MainActivity : AppCompatActivity() {
         updateCountdownUI()
     }
 
-    private fun onTimerFinished(){
+     private fun onTimerFinished(){
         Log.i("Function: ", "onTimerFinished")
         timerState = TimerState.Stopped
         setNewTimerLength()
