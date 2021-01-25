@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val window: Window = window
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window.setStatusBarColor(Color.parseColor("#43a047"))
+            window.setStatusBarColor(Color.parseColor("#f44336"))
         }
         countFlag++
 
