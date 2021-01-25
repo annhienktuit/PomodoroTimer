@@ -1,16 +1,17 @@
 package com.annhienktuit.pomodorotimer.util
 
 import android.content.Context
-import android.preference.PreferenceManager
+//import android.preference.PreferenceManager
 import com.annhienktuit.pomodorotimer.MainActivity
+import androidx.preference.PreferenceManager
 
 class PrefUtil {
     companion object{
         private const val TIMER_LENGTH_ID = "com.annhienktuit.timer.timer_length"
         fun getTimerLength(context: Context):Int{
-//            val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-//            return preferences.getInt(TIMER_LENGTH_ID, 25)
-            return 1
+            val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+            return preferences.getInt(TIMER_LENGTH_ID, 1)
+
         }
 
         private const val PREVIOUS_TIMER_LENGTH_SECONDS_ID = "com.annhienktuit.timer.previous_timer_length"
