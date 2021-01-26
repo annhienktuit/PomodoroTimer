@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
         seekBar?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 var timeinSecond = progress
-                lengthInMinutes = progress * 5
+                lengthInMinutes = progress
                 textView_countdown.text = "$timeinSecond:00"
                 timerLengthSeconds = timeinSecond*60L
                 secondsRemaining = timerLengthSeconds
@@ -112,11 +112,11 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onResume() {
         super.onResume()
-        Log.i("test", secondsRemaining.toString())
         initTimer()
         countFlag++
         //background
-        Log.i("secondremaing", secondsRemaining.toString())
+        Log.i("secondremaing",secondsRemaining.toString())
+        Log.i("lenghthinMinutes", (lengthInMinutes*60).toString())
         if(secondsRemaining == lengthInMinutes*60.toLong() && countFlag > 0) {
             timerState = TimerState.Stopped
             if(countCycle < 4) countCycle++
