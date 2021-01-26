@@ -34,7 +34,9 @@
         </activity>
         <activity
             android:name=".AboutActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.Design.Light.NoActionBar">
+
+        </activity>
 
         <receiver
             android:name=".TimerExpiredReceiver"
