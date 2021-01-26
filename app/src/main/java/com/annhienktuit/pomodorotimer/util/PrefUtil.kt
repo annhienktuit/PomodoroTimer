@@ -9,9 +9,7 @@ class PrefUtil {
     companion object{
         private const val TIMER_LENGTH_ID = "com.annhienktuit.timer.timer_length"
         fun getTimerLength(context: Context):Int{
-            val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-            return preferences.getInt(TIMER_LENGTH_ID, 1)
-
+           return 25
         }
 
         private const val PREVIOUS_TIMER_LENGTH_SECONDS_ID = "com.annhienktuit.timer.previous_timer_length"

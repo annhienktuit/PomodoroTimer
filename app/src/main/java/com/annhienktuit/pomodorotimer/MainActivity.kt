@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.*
+import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.annhienktuit.pomodorotimer.util.NotificationUtil
@@ -53,7 +54,7 @@ class MainActivity : AppCompatActivity() {
     private var secondsRemaining: Long  = 0
     private var countCycle: Int = 0
     private var countFlag: Int = -2
-    val lengthInMinutes = PrefUtil.getTimerLength(this)
+    var lengthInMinutes = PrefUtil.getTimerLength(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,11 +89,34 @@ class MainActivity : AppCompatActivity() {
         }
         textViewCount.text = "$countCycle of 4 pomodoros completed"
         textViewDescription.text = "Choose a work from to-do list and press start button"
+        //seekbar
+        seekBar?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                var timeinSecond = progress
+                lengthInMinutes = progress * 5
+                textView_countdown.text = "$timeinSecond:00"
+                timerLengthSeconds = timeinSecond*60L
+                secondsRemaining = timerLengthSeconds
+                progress_countdown.max = timerLengthSeconds.toInt()
+            }
 
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+                //here we can write some code to do something whenever the user touche the seekbar
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+                // show some message after user stopped scrolling the seekbar
+
+            }
+        })
     }
     override fun onResume() {
         super.onResume()
         Log.i("test", secondsRemaining.toString())
+        initTimer()
+        countFlag++
+        //background
+        Log.i("secondremaing", secondsRemaining.toString())
         if(secondsRemaining == lengthInMinutes*60.toLong() && countFlag > 0) {
             timerState = TimerState.Stopped
             if(countCycle < 4) countCycle++
@@ -100,9 +124,6 @@ class MainActivity : AppCompatActivity() {
             updateCountdownUI()
             textViewDescription.text = "Take a break"
         }
-        initTimer()
-        countFlag++
-        //background
         removeAlarm(this)
         NotificationUtil.hideTimerNotification(this)
     }
@@ -162,11 +183,10 @@ class MainActivity : AppCompatActivity() {
     }
 
      private fun onTimerFinished(){
-        Log.i("Function: ", "onTimerFinished")
         timerState = TimerState.Stopped
         setNewTimerLength()
         //running
-        if(textView_countdown.text == "00:00"){
+        if(textView_countdown.text == "0:00"){
             setFinishedPomodoro()
         }
         progress_countdown.progress = 0
@@ -200,8 +220,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun setNewTimerLength(){
         Log.i("Function: ", "setNewTimerLength")
-
-        val lengthInMinutes = PrefUtil.getTimerLength(this)
+        //val lengthInMinutes = PrefUtil.getTimerLength(this)
+        var lengthInMinutes = seekBar.progress
         timerLengthSeconds = lengthInMinutes*60L
         progress_countdown.max = timerLengthSeconds.toInt()
     }
@@ -216,7 +236,11 @@ class MainActivity : AppCompatActivity() {
         val minutesUntilFinished = secondsRemaining / 60
         val secondsInMinuteUntilFinished = secondsRemaining - minutesUntilFinished*60
         val secondsStr = secondsInMinuteUntilFinished.toString()
-        textView_countdown.text = "0$minutesUntilFinished:${
+        val minutesStr = {
+            if(minutesUntilFinished < 10) "0" + minutesUntilFinished.toString()
+            else minutesUntilFinished.toString()
+        }
+        textView_countdown.text = "$minutesUntilFinished:${
             if(secondsStr.length == 2) secondsStr
             else "0" + secondsStr
         }"
@@ -265,3 +289,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
