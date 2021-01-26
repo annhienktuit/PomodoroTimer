@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.annhienktuit.pomodorotimer.util.NotificationUtil
 import com.annhienktuit.pomodorotimer.util.PrefUtil
+import com.ramotion.fluidslider.FluidSlider
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -89,26 +90,24 @@ class MainActivity : AppCompatActivity() {
         }
         textViewCount.text = "$countCycle of 4 pomodoros completed"
         textViewDescription.text = "Choose a work from to-do list and press start button"
-        //seekbar
-        seekBar?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-                var timeinSecond = progress
-                lengthInMinutes = progress
-                textView_countdown.text = "$timeinSecond:00"
-                timerLengthSeconds = timeinSecond*60L
-                secondsRemaining = timerLengthSeconds
-                progress_countdown.max = timerLengthSeconds.toInt()
-            }
+        //fluidslider
+        val max = 60
+        val min = 10
+        val total = max - min
+        fluidslider.positionListener = { pos -> fluidslider.bubbleText = "${min + (total  * pos).toInt()}"
+            Log.i("fluid", fluidslider.bubbleText)
+            //settings
+            var timeinSecond = fluidslider.bubbleText!!.toInt()
+            lengthInMinutes = fluidslider.bubbleText!!.toInt()
+            textView_countdown.text = "$timeinSecond:00"
+            timerLengthSeconds = timeinSecond*60L
+            secondsRemaining = timerLengthSeconds
+            progress_countdown.max = timerLengthSeconds.toInt()
+        }
+        fluidslider.position = 0.3f
+        fluidslider.startText ="$min"
+        fluidslider.endText = "$max"
 
-            override fun onStartTrackingTouch(seekBar: SeekBar) {
-                //here we can write some code to do something whenever the user touche the seekbar
-            }
-
-            override fun onStopTrackingTouch(seekBar: SeekBar) {
-                // show some message after user stopped scrolling the seekbar
-
-            }
-        })
     }
     override fun onResume() {
         super.onResume()
@@ -220,8 +219,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun setNewTimerLength(){
         Log.i("Function: ", "setNewTimerLength")
-        //val lengthInMinutes = PrefUtil.getTimerLength(this)
-        var lengthInMinutes = seekBar.progress
+//        var lengthInMinutes = seekBar.progress
+        var lengthInMinutes = fluidslider.bubbleText!!.toInt()
         timerLengthSeconds = lengthInMinutes*60L
         progress_countdown.max = timerLengthSeconds.toInt()
     }

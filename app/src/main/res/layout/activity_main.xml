@@ -28,28 +28,28 @@
         style="@style/Widget.MaterialProgressBar.ProgressBar"
         android:layout_width="313dp"
         android:layout_height="313dp"
+        android:elevation="6dp"
         android:minWidth="306dp"
         android:minHeight="306dp"
-        app:mpb_progressTint="#8bc34a"
-        android:elevation="6dp"
-        app:mpb_determinateCircularProgressStyle = "dynamic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/appBarLayout"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/appBarLayout"
-        app:layout_constraintVertical_bias="0.39">
+        app:layout_constraintVertical_bias="0.39"
+        app:mpb_determinateCircularProgressStyle="dynamic"
+        app:mpb_progressTint="#8bc34a">
 
     </me.zhanghai.android.materialprogressbar.MaterialProgressBar>
 
     <TextView
         android:id="@+id/textView_countdown"
-        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
         android:textAppearance="@style/ShapeAppearance.MaterialComponents.LargeComponent"
         android:textSize="70sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -59,29 +59,17 @@
         tools:text="25:00" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_stop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_bigger_margin"
-        app:backgroundTint="#f44336"
-        app:elevation="6dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/appBarLayout"
-        app:srcCompat="@drawable/ic_stop" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_pause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
-        android:layout_margin="@dimen/fab_bigger_margin"
+        android:layout_marginTop="96dp"
         app:backgroundTint="#f44336"
         app:elevation="6dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/fab_stop"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toEndOf="@+id/fab_start"
+        app:layout_constraintHorizontal_bias="0.759"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progress_countdown"
         app:srcCompat="@drawable/ic_pause" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -89,13 +77,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"
-        android:layout_margin="@dimen/fab_bigger_margin"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="52dp"
+        app:backgroundTint="#f44336"
+        app:borderWidth="0dp"
+        app:elevation="6dp"
+        app:layout_constraintEnd_toStartOf="@+id/fab_pause"
+        app:layout_constraintHorizontal_bias="0.935"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progress_countdown"
+        app:srcCompat="@drawable/ic_play" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="56dp"
         app:backgroundTint="#f44336"
         app:elevation="6dp"
-        app:borderWidth="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_play" />
+        app:layout_constraintBottom_toBottomOf="@+id/fab_pause"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progress_countdown"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/ic_stop" />
 
     <TextView
         android:id="@+id/textViewCount"
@@ -107,6 +112,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView_countdown" />
 
+
     <TextView
         android:id="@+id/textViewDescription"
         android:layout_width="wrap_content"
@@ -116,19 +122,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/appBarLayout"
-        app:layout_constraintVertical_bias="0.709" />
+        app:layout_constraintVertical_bias="0.705" />
 
-    <SeekBar
-        android:id="@+id/seekBar"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
+    <com.ramotion.fluidslider.FluidSlider
+        android:id="@+id/fluidslider"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:max="12"
-        android:min="1"
-        android:progress="5"
+        android:layout_height="100dp"
+        app:bar_color="@color/main_color"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+        app:size="small">
+
+    </com.ramotion.fluidslider.FluidSlider>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

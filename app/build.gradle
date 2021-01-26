@@ -48,6 +48,7 @@ dependencies {
     implementation 'com.pavelsikun:material-seekbar-preference:2.3.0'
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'androidx.preference:preference:1.0.0'
+    implementation 'com.ramotion.fluidslider:fluid-slider:0.3.1'
 }
 repositories {
     mavenCentral()
