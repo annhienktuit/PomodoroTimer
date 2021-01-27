@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".AboutActivity">
 
 
@@ -11,13 +12,13 @@
         android:id="@+id/imageView1"
         android:layout_width="1.8875in"
         android:layout_height="1.71875in"
-        android:layout_marginStart="220dp"
+        android:layout_marginStart="208dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/avatar"
+        android:src="@drawable/sketch"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.229"
+        app:layout_constraintVertical_bias="0.224"
         app:riv_border_color="#FFFFFF"
         app:riv_border_width="2dip"
         app:riv_corner_radius="30dip"
@@ -103,5 +104,65 @@
         app:layout_constraintTop_toBottomOf="@+id/imageViewLinkedIn"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_github" />
+
+    <TextView
+        android:id="@+id/textViewIns"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:text="@nhienisthename"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        app:layout_constraintStart_toEndOf="@+id/imageViewIns"
+        app:layout_constraintTop_toTopOf="@+id/imageViewIns" />
+
+    <TextView
+        android:id="@+id/textViewInsFB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="48dp"
+        android:text="annhienkt"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        app:layout_constraintStart_toEndOf="@+id/imageViewFB"
+        app:layout_constraintTop_toBottomOf="@+id/textViewIns" />
+
+    <TextView
+        android:id="@+id/textViewLinkedIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:text="annhien-uit"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        app:layout_constraintStart_toEndOf="@+id/imageViewLinkedIn"
+        app:layout_constraintTop_toBottomOf="@+id/textViewGmail" />
+
+    <TextView
+        android:id="@+id/textViewGit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:text="annhienktuit"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        app:layout_constraintStart_toEndOf="@+id/imageViewGit"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLinkedIn" />
+
+    <TextView
+        android:id="@+id/textViewGmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="28dp"
+        android:text="annhien.se@gmail.com"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        app:layout_constraintStart_toEndOf="@+id/imageViewGmail"
+        app:layout_constraintTop_toBottomOf="@+id/textViewInsFB" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
