@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
         textViewDescription.text = "Choose a work from to-do list and press start button"
         //fluidslider
         val max = 60
-        val min = 10
+        val min = 1
         val total = max - min
         fluidslider.positionListener = { pos -> fluidslider.bubbleText = "${min + (total  * pos).toInt()}"
             Log.i("fluid", fluidslider.bubbleText)

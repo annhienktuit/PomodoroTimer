@@ -18,25 +18,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.224"
+        app:layout_constraintVertical_bias="0.045"
         app:riv_border_color="#FFFFFF"
         app:riv_border_width="2dip"
         app:riv_corner_radius="30dip"
         app:riv_mutate_background="true"
         app:riv_oval="true"
         app:riv_tile_mode="repeat" />
-
-    <TextView
-        android:id="@+id/textViewJob2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="4dp"
-        android:lines="2"
-        android:text="University of Information \n Technology - VNUHCM"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewName" />
 
     <TextView
         android:id="@+id/textViewName"
@@ -50,12 +38,47 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.246" />
+        app:layout_constraintVertical_bias="0.128" />
+
+    <ImageView
+        android:id="@+id/imageViewGmail"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="336dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewFB"
+        app:srcCompat="@drawable/ic_gmail" />
+
+    <TextView
+        android:id="@+id/textViewLinkedIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="48dp"
+        android:text="annhien-uit"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        app:layout_constraintStart_toEndOf="@+id/imageViewLinkedIn"
+        app:layout_constraintTop_toBottomOf="@+id/textViewGmail" />
+
+    <TextView
+        android:id="@+id/textViewIns"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="4dp"
+        android:text="@nhienisthename"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        app:layout_constraintStart_toEndOf="@+id/imageViewIns"
+        app:layout_constraintTop_toTopOf="@+id/imageViewIns" />
 
     <ImageView
         android:id="@+id/imageViewIns"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.074"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,59 +86,14 @@
         app:srcCompat="@drawable/ic_instagram" />
 
     <ImageView
-        android:id="@+id/imageViewLinkedIn"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="336dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewGmail"
-        app:srcCompat="@drawable/ic_linkedin" />
-
-    <ImageView
-        android:id="@+id/imageViewGmail"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="336dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewFB"
-        app:srcCompat="@drawable/ic_gmail" />
-
-    <ImageView
-        android:id="@+id/imageViewFB"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="336dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewIns"
-        app:srcCompat="@drawable/ic_facebook" />
-
-    <ImageView
         android:id="@+id/imageViewGit"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="336dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewLinkedIn"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_github" />
-
-    <TextView
-        android:id="@+id/textViewIns"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
-        android:text="@nhienisthename"
-        android:textColor="#000000"
-        android:textSize="22sp"
-        app:layout_constraintStart_toEndOf="@+id/imageViewIns"
-        app:layout_constraintTop_toTopOf="@+id/imageViewIns" />
 
     <TextView
         android:id="@+id/textViewInsFB"
@@ -129,17 +107,49 @@
         app:layout_constraintStart_toEndOf="@+id/imageViewFB"
         app:layout_constraintTop_toBottomOf="@+id/textViewIns" />
 
+    <ImageView
+        android:id="@+id/imageViewLinkedIn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="336dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewGmail"
+        app:srcCompat="@drawable/ic_linkedin" />
+
     <TextView
-        android:id="@+id/textViewLinkedIn"
+        android:id="@+id/textViewJob2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:lines="2"
+        android:text="University of Information \n Technology - VNUHCM"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+
+    <ImageView
+        android:id="@+id/imageViewFB"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="336dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewIns"
+        app:srcCompat="@drawable/ic_facebook" />
+
+    <TextView
+        android:id="@+id/textViewGmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
-        android:text="annhien-uit"
+        android:layout_marginTop="52dp"
+        android:text="annhien.se@gmail.com"
         android:textColor="#000000"
         android:textSize="22sp"
-        app:layout_constraintStart_toEndOf="@+id/imageViewLinkedIn"
-        app:layout_constraintTop_toBottomOf="@+id/textViewGmail" />
+        app:layout_constraintStart_toEndOf="@+id/imageViewGmail"
+        app:layout_constraintTop_toBottomOf="@+id/textViewInsFB" />
 
     <TextView
         android:id="@+id/textViewGit"
@@ -153,16 +163,21 @@
         app:layout_constraintStart_toEndOf="@+id/imageViewGit"
         app:layout_constraintTop_toBottomOf="@+id/textViewLinkedIn" />
 
-    <TextView
-        android:id="@+id/textViewGmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="28dp"
-        android:text="annhien.se@gmail.com"
-        android:textColor="#000000"
-        android:textSize="22sp"
-        app:layout_constraintStart_toEndOf="@+id/imageViewGmail"
-        app:layout_constraintTop_toBottomOf="@+id/textViewInsFB" />
+    <com.ornach.nobobutton.NoboButton
+        android:id="@+id/buttonCoffee"
+        android:layout_width="151dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewJob2"
+        app:nb_backgroundColor="@color/black"
+        app:nb_drawableResource="@drawable/ic_coffee"
+        app:nb_iconColor="@color/white"
+        app:nb_iconPosition="left"
+        app:nb_radius="20dp"
+        app:nb_text="Buy me a coffee"
+        app:nb_textColor="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
