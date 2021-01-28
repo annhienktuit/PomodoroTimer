@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:elevation="0dp"
     tools:context=".MainActivity">
 
@@ -38,7 +39,7 @@
         app:layout_constraintTop_toTopOf="@+id/appBarLayout"
         app:layout_constraintVertical_bias="0.39"
         app:mpb_determinateCircularProgressStyle="dynamic"
-        app:mpb_progressTint="#8bc34a">
+        app:mpb_progressTint="#80cbc4">
 
     </me.zhanghai.android.materialprogressbar.MaterialProgressBar>
 

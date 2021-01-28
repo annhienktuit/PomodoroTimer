@@ -48,6 +48,9 @@ class MainActivity : AppCompatActivity() {
     enum class TimerState {
         Stopped, Paused, Running
     }
+    enum class PomodoroState{
+        Study, Relax
+    }
     //khai bao bien
     private lateinit var timer: CountDownTimer
     private var timerLengthSeconds: Long = 0
@@ -56,7 +59,7 @@ class MainActivity : AppCompatActivity() {
     private var countCycle: Int = 0
     private var countFlag: Int = -2
     var lengthInMinutes = PrefUtil.getTimerLength(this)
-
+    private var pomodoroState = PomodoroState.Relax
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -73,6 +76,8 @@ class MainActivity : AppCompatActivity() {
         countFlag++
 
         fab_start.setOnClickListener { v ->
+            Log.i("countcycle", countCycle.toString())
+            if(countCycle == 0) pomodoroState = PomodoroState.Study
             startTimer()
             timerState = TimerState.Running
             updateButtons()
@@ -85,17 +90,18 @@ class MainActivity : AppCompatActivity() {
         }
         fab_stop.setOnClickListener { v->
             timer.cancel()
-            onTimerFinished()
-            textViewDescription.text = "Choose a work from to-do list and press start button"
+            onStopPressed()
+            textViewDescription.text = "Choose a work from your to-do list and press start button"
         }
         textViewCount.text = "$countCycle of 4 pomodoros completed"
         textViewDescription.text = "Choose a work from to-do list and press start button"
+
         //fluidslider
         val max = 60
         val min = 1
         val total = max - min
         fluidslider.positionListener = { pos -> fluidslider.bubbleText = "${min + (total  * pos).toInt()}"
-            Log.i("fluid", fluidslider.bubbleText)
+
             //settings
             var timeinSecond = fluidslider.bubbleText!!.toInt()
             lengthInMinutes = fluidslider.bubbleText!!.toInt()
@@ -103,6 +109,7 @@ class MainActivity : AppCompatActivity() {
             timerLengthSeconds = timeinSecond*60L
             secondsRemaining = timerLengthSeconds
             progress_countdown.max = timerLengthSeconds.toInt()
+            Log.i("fluid", timeinSecond.toString() + " " + lengthInMinutes.toString())
         }
         fluidslider.position = 0.3f
         fluidslider.startText ="$min"
@@ -114,14 +121,19 @@ class MainActivity : AppCompatActivity() {
         initTimer()
         countFlag++
         //background
-        Log.i("secondremaing",secondsRemaining.toString())
-        Log.i("lenghthinMinutes", (lengthInMinutes*60).toString())
         if(secondsRemaining == lengthInMinutes*60.toLong() && countFlag > 0) {
             timerState = TimerState.Stopped
-            if(countCycle < 4) countCycle++
-            else countCycle = 0
+            if(pomodoroState == PomodoroState.Study) {
+                 setFinishedPomodoro()
+//                pomodoroState = PomodoroState.Relax
+//                if (countCycle < 4) countCycle++
+//                else countCycle = 0
+            }
+            else if(pomodoroState == PomodoroState.Relax){
+                setFinishedPomodoro()
+            }
             updateCountdownUI()
-            textViewDescription.text = "Take a break"
+//            textViewDescription.text = "Take a break"
         }
         removeAlarm(this)
         NotificationUtil.hideTimerNotification(this)
@@ -148,15 +160,12 @@ class MainActivity : AppCompatActivity() {
         PrefUtil.setTimerState(timerState, this)
     }
 
-    fun getCycle(): Int{
-        return countCycle
-    }
-
     private fun initTimer(){
         Log.i("Function: ", "initTimer")
         timerState = PrefUtil.getTimerState(this)
         if(timerState == TimerState.Stopped){
-            setNewTimerLength()
+//            setNewTimerLength()
+            setFinishedPomodoro()
         }
         else {
             setPreviousTimerLength()
@@ -166,7 +175,6 @@ class MainActivity : AppCompatActivity() {
         }
         else
             timerLengthSeconds
-        //
         val alarmSetTime = PrefUtil.getAlarmSetTime(this)
         if(alarmSetTime > 0) {
             secondsRemaining -= nowSeconds - alarmSetTime
@@ -183,7 +191,8 @@ class MainActivity : AppCompatActivity() {
 
      private fun onTimerFinished(){
         timerState = TimerState.Stopped
-        setNewTimerLength()
+//        setNewTimerLength()
+         setFinishedPomodoro()
         //running
         if(textView_countdown.text == "0:00"){
             setFinishedPomodoro()
@@ -196,10 +205,29 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun onStopPressed(){
+        timerState = TimerState.Stopped
+         setNewTimerLength()
+        //running
+        if(textView_countdown.text == "0:00"){
+            setFinishedPomodoro()
+        }
+        progress_countdown.progress = 0
+        PrefUtil.setSecondsRemaining(timerLengthSeconds, this)
+        secondsRemaining = timerLengthSeconds
+        updateButtons()
+        updateCountdownUI()
+    }
+
     private fun startTimer(){
-        Log.i("Function: ", "startTimer")
+        Log.i("Function: ", "startTimer: " + pomodoroState.toString())
         timerState = TimerState.Running
-        textViewDescription.text = "Focus on your work until the timer rings"
+        if(pomodoroState == PomodoroState.Study) {
+            textViewDescription.text = "Focus on your work until the timer rings"
+        }
+        else if(pomodoroState == PomodoroState.Relax){
+            textViewDescription.text = "Take a break until the timer ends"
+        }
         timer = object: CountDownTimer(secondsRemaining * 1000, 1000) {
             override fun onFinish() = onTimerFinished()
             override fun onTick(millisUltilFinished: Long){
@@ -210,11 +238,39 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setFinishedPomodoro(){
-        val eventually: MediaPlayer = MediaPlayer.create(this, R.raw.eventually)
-        eventually.start()
-        if(countCycle < 4) countCycle++
-        else countCycle = 0
-        textViewDescription.text = "Take a break"
+        if(pomodoroState == PomodoroState.Study) {
+            var timeinSecond = 100
+            val eventually: MediaPlayer = MediaPlayer.create(this, R.raw.eventually)
+            eventually.start()
+            if(countCycle < 4) countCycle++
+            else countCycle = 0
+            textViewDescription.text = "Press start button to begin your relax duration"
+            pomodoroState = PomodoroState.Relax
+            if(countCycle == 4){
+                timeinSecond = 2
+                lengthInMinutes = 2
+            }
+            else {
+                timeinSecond = 1
+                lengthInMinutes = 1
+            }
+            textView_countdown.text = "0$timeinSecond:00"
+            timerLengthSeconds = timeinSecond * 60L
+            secondsRemaining = timerLengthSeconds
+            progress_countdown.max = timerLengthSeconds.toInt()
+        }
+        else if(pomodoroState == PomodoroState.Relax){
+            val eventually: MediaPlayer = MediaPlayer.create(this, R.raw.eventually)
+            eventually.start()
+            textViewDescription.text = "Choose a work from your to-do list and press start button"
+            pomodoroState = PomodoroState.Study
+            var timeinSecond = fluidslider.bubbleText!!.toInt()
+            lengthInMinutes = fluidslider.bubbleText!!.toInt()
+            textView_countdown.text = "$timeinSecond:00"
+            timerLengthSeconds = timeinSecond*60L
+            secondsRemaining = timerLengthSeconds
+            progress_countdown.max = timerLengthSeconds.toInt()
+        }
     }
 
     private fun setNewTimerLength(){
