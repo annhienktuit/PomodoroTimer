@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity() {
     }
     //khai bao bien
     private lateinit var timer: CountDownTimer
+    private var startClickCount = 0
     private var timerLengthSeconds: Long = 0
     private var timerState = TimerState.Stopped
     private var secondsRemaining: Long  = 0
@@ -77,10 +78,11 @@ class MainActivity : AppCompatActivity() {
 
         fab_start.setOnClickListener { v ->
             Log.i("countcycle", countCycle.toString())
-            if(countCycle == 0) pomodoroState = PomodoroState.Study
+            if(startClickCount == 0) pomodoroState = PomodoroState.Study
             startTimer()
             timerState = TimerState.Running
             updateButtons()
+            startClickCount++
         }
 
         fab_pause.setOnClickListener { v->
@@ -118,20 +120,51 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onResume() {
         super.onResume()
+        Log.i("countstart", startClickCount.toString())
+        Log.i("function", "onResume")
         initTimer()
         countFlag++
         //background
         if(secondsRemaining == lengthInMinutes*60.toLong() && countFlag > 0) {
-            timerState = TimerState.Stopped
-            if(pomodoroState == PomodoroState.Study) {
-                 setFinishedPomodoro()
-//                pomodoroState = PomodoroState.Relax
-//                if (countCycle < 4) countCycle++
+//            if(pomodoroState == PomodoroState.Study) {
+//                Log.e("status: ","study to relax")
+//                var timeinSecond = 100
+//                val eventually: MediaPlayer = MediaPlayer.create(this, R.raw.eventually)
+//                eventually.start()
+//                if(countCycle < 4) countCycle++
 //                else countCycle = 0
-            }
-            else if(pomodoroState == PomodoroState.Relax){
-                setFinishedPomodoro()
-            }
+//                textViewDescription.text = "Press start button to begin your relax duration"
+//                pomodoroState = PomodoroState.Relax
+//                if(countCycle == 4){
+//                    timeinSecond = 2
+//                    lengthInMinutes = 2
+//                }
+//                else {
+//                    timeinSecond = 1
+//                    lengthInMinutes = 1
+//                }
+//                textView_countdown.text = "0$timeinSecond:00"
+//                timerLengthSeconds = timeinSecond * 60L
+//                secondsRemaining = timerLengthSeconds
+//                progress_countdown.max = timerLengthSeconds.toInt()
+////                pomodoroState = PomodoroState.Relax
+////                if (countCycle < 4) countCycle++
+////                else countCycle = 0
+//            }
+//            else if(pomodoroState == PomodoroState.Relax){
+//                Log.e("status: ","relax to study")
+//                val eventually: MediaPlayer = MediaPlayer.create(this, R.raw.eventually)
+//                eventually.start()
+//                textViewDescription.text = "Choose a work from your to-do list and press start button"
+//                pomodoroState = PomodoroState.Study
+//                var timeinSecond = fluidslider.bubbleText!!.toInt()
+//                lengthInMinutes = fluidslider.bubbleText!!.toInt()
+//                textView_countdown.text = "$timeinSecond:00"
+//                timerLengthSeconds = timeinSecond*60L
+//                secondsRemaining = timerLengthSeconds
+//                progress_countdown.max = timerLengthSeconds.toInt()
+//            }
+            timerState = TimerState.Stopped
             updateCountdownUI()
 //            textViewDescription.text = "Take a break"
         }
@@ -163,6 +196,7 @@ class MainActivity : AppCompatActivity() {
     private fun initTimer(){
         Log.i("Function: ", "initTimer")
         timerState = PrefUtil.getTimerState(this)
+        Log.i("timerstate:", timerState.toString())
         if(timerState == TimerState.Stopped){
 //            setNewTimerLength()
             setFinishedPomodoro()
