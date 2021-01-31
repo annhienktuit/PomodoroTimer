@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".UsePomodoroActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textViewtitle"
+            android:layout_width="393dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="40dp"
+            android:text="How to use Pomodoro effectively?"
+            android:textColor="#000000"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="327dp"
+            android:layout_height="263dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textViewtitle"
+            app:srcCompat="@drawable/ic_time" />
+
+        <TextView
+            android:id="@+id/textViewDesc"
+            android:layout_width="376dp"
+            android:layout_height="328dp"
+            android:layout_marginTop="20dp"
+            android:text="There are six steps in the original technique:\n 1.	Decide on the task to be done.\n 2.	Set the pomodoro timer (traditionally to 25 minutes). \n 3.	Work on the task.\n 4.	End work when the timer rings and put a checkmark on a piece of paper. \n 5.	If you have fewer than four checkmarks, take a short break (3–5 minutes) and then return to step 2; otherwise continue to step 6.\n 6.	After four pomodoros, take a longer break (15–30 minutes), reset your checkmark count to zero, then go to step 1.\n "
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/textViewMore"
+            android:layout_width="376dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="304dp"
+            android:text="For the purposes of the technique, a pomodoro is the interval of time spent working.\n Regular breaks are taken, aiding assimilation. A short (3–5 minutes) rest separates consecutive pomodoros. Four pomodoros form a set. A longer (15–30 minute) rest is taken between sets.\n A goal of the technique is to reduce the impact of internal and external interruptions on focus and flow. A pomodoro is indivisible; when interrupted during a pomodoro, either the other activity must be recorded and postponed (using the inform – negotiate – schedule – call back strategy) or the pomodoro must be abandone.\n After task completion in a pomodoro, any time remaining could be devoted to activities such as:\n 1.	Review and edit the work just completed.\n 2.	Review the activities from a learning point of view: What did I learn? What could I do better or differently?\n 3.	Review the list of upcoming tasks for the next planned Pomodoro time blocks, and start reflecting on or updating those tasks.\n "
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/textViewDesc"
+            app:layout_constraintHorizontal_bias="0.514"
+            app:layout_constraintStart_toStartOf="@+id/textViewDesc"
+            app:layout_constraintTop_toTopOf="@+id/textViewDesc" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

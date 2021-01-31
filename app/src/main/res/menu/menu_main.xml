@@ -8,5 +8,11 @@
         android:title="@string/action_settings"
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_info" />
+    <item
+        android:id="@+id/action_pomodoro"
+        android:orderInCategory="90"
+        android:title="About Pomodoro"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_question" />
 
 </menu>

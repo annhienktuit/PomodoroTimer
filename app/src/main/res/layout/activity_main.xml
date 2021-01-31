@@ -43,6 +43,7 @@
 
     </me.zhanghai.android.materialprogressbar.MaterialProgressBar>
 
+
     <TextView
         android:id="@+id/textView_countdown"
         android:layout_width="wrap_content"
@@ -60,18 +61,31 @@
         tools:text="25:00" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_pause"
+        android:id="@+id/fab_stop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:layout_marginTop="96dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="64dp"
         app:backgroundTint="#f44336"
         app:elevation="6dp"
-        app:layout_constraintEnd_toStartOf="@+id/fab_stop"
-        app:layout_constraintHorizontal_bias="0.759"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/fab_pause"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progress_countdown"
-        app:srcCompat="@drawable/ic_pause" />
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/ic_stop" />
+
+    <com.ramotion.fluidslider.FluidSlider
+        android:id="@+id/fluidslider"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:bar_color="@color/main_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:size="small">
+
+    </com.ramotion.fluidslider.FluidSlider>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_start"
@@ -84,24 +98,24 @@
         app:borderWidth="0dp"
         app:elevation="6dp"
         app:layout_constraintEnd_toStartOf="@+id/fab_pause"
-        app:layout_constraintHorizontal_bias="0.935"
+        app:layout_constraintHorizontal_bias="0.927"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progress_countdown"
         app:srcCompat="@drawable/ic_play" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_stop"
+        android:id="@+id/fab_pause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="56dp"
+        android:layout_gravity="bottom|center"
+        android:layout_marginTop="96dp"
         app:backgroundTint="#f44336"
         app:elevation="6dp"
-        app:layout_constraintBottom_toBottomOf="@+id/fab_pause"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/fab_stop"
+        app:layout_constraintHorizontal_bias="0.753"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progress_countdown"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/ic_stop" />
+        app:srcCompat="@drawable/ic_pause" />
 
     <TextView
         android:id="@+id/textViewCount"
@@ -121,24 +135,12 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/helvetica_normal"
         android:text="Description"
+        android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/appBarLayout"
         app:layout_constraintVertical_bias="0.705" />
-
-    <com.ramotion.fluidslider.FluidSlider
-        android:id="@+id/fluidslider"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:bar_color="@color/main_color"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:size="small">
-
-    </com.ramotion.fluidslider.FluidSlider>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

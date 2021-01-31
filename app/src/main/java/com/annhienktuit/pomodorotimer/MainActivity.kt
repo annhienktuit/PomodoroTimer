@@ -100,7 +100,7 @@ class MainActivity : AppCompatActivity() {
 
         //fluidslider
         val max = 60
-        val min = 1
+        val min = 10
         val total = max - min
         fluidslider.positionListener = { pos -> fluidslider.bubbleText = "${min + (total  * pos).toInt()}"
 
@@ -281,12 +281,12 @@ class MainActivity : AppCompatActivity() {
             textViewDescription.text = "Press start button to begin your relax duration"
             pomodoroState = PomodoroState.Relax
             if(countCycle == 4){
-                timeinSecond = 2
-                lengthInMinutes = 2
+                timeinSecond = 15
+                lengthInMinutes = 15
             }
             else {
-                timeinSecond = 1
-                lengthInMinutes = 1
+                timeinSecond = 5
+                lengthInMinutes = 5
             }
             textView_countdown.text = "0$timeinSecond:00"
             timerLengthSeconds = timeinSecond * 60L
@@ -371,6 +371,11 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.action_info -> {
                 val intent = Intent(this, AboutActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_pomodoro -> {
+                val intent = Intent(this, AboutPomodoroActivity::class.java)
                 startActivity(intent)
                 true
             }
